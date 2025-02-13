@@ -23,35 +23,35 @@ This repository contains Python scripts for simulating quantum transport phenome
 ### **1D Tight-Binding Model Hamiltonian**
 The Hamiltonian for a 1D tight-binding system is given by:
 
-\[
-H = \sum_{i} \varepsilon_i c_i^\dagger c_i + \sum_{\langle i,j \rangle} t_{ij} c_i^\dagger c_j
-\]
+```
+H = Σᵢ εᵢ cᵢ† cᵢ + Σ⟨i,j⟩ tᵢⱼ cᵢ† cⱼ
+```
 
 where:
-- \( \varepsilon_i \) is the on-site energy.
-- \( c_i^\dagger \), \( c_i \) are the creation and annihilation operators.
-- \( t_{ij} \) is the hopping amplitude between sites \( i \) and \( j \).
+- `εᵢ` is the on-site energy.
+- `cᵢ†`, `cᵢ` are the creation and annihilation operators.
+- `tᵢⱼ` is the hopping amplitude between sites `i` and `j`.
 
 ### **Landauer Formula for Conductance**
 The conductance in a quantum transport system is given by:
 
-\[
-G = \frac{2e^2}{h} T(E)
-\]
+```
+G = (2e²/h) T(E)
+```
 
-where \( T(E) \) is the transmission probability at energy \( E \).
+where `T(E)` is the transmission probability at energy `E`.
 
 ### **2D Tight-Binding Model with Magnetic Field (Quantum Hall Effect)**
 For a 2D lattice in a perpendicular magnetic field, the Hamiltonian is modified as:
 
-\[
-H = \sum_{x,y} \varepsilon_{x,y} c_{x,y}^\dagger c_{x,y} + \sum_{\langle x',y' \rangle} t_{x',y'} e^{i\phi_{x',y'}} c_{x',y'}^\dagger c_{x,y}
-\]
+```
+H = Σₓ,ᵧ εₓ,ᵧ cₓ,ᵧ† cₓ,ᵧ + Σ⟨x',y'⟩ tₓ',ᵧ' e^(iφₓ',ᵧ') cₓ',ᵧ'† cₓ,ᵧ
+```
 
-where the Peierls phase \( \phi_{x',y'} \) is introduced to simulate the effect of the magnetic field.
+where the Peierls phase `φₓ',ᵧ'` is introduced to simulate the effect of the magnetic field.
 
 ### **Anderson Localization**
-When disorder is introduced into the system, the electron wavefunctions become localized, leading to a suppression of conductance. This phenomenon is modeled by adding random fluctuations to the on-site energy \( \varepsilon_i \).
+When disorder is introduced into the system, the electron wavefunctions become localized, leading to a suppression of conductance. This phenomenon is modeled by adding random fluctuations to the on-site energy `εᵢ`.
 
 ## Results
 
@@ -75,7 +75,6 @@ When disorder is introduced into the system, the electron wavefunctions become l
 ![Disordered QHE disorder = 1.0](images/qhe_disorder_1.jpg)
 ![Disordered QHE disorder = 2.0](images/qhe_disorder_2.jpg)
 ![Disordered QHE disorder = 3.0](images/qhe_disorder_3.jpg)
-
 
 ## Installation
 

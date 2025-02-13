@@ -53,29 +53,6 @@ where the Peierls phase `φₓ',ᵧ'` is introduced to simulate the effect of th
 ### **Anderson Localization**
 When disorder is introduced into the system, the electron wavefunctions become localized, leading to a suppression of conductance. This phenomenon is modeled by adding random fluctuations to the on-site energy `εᵢ`.
 
-## Results
-
-### 1D Chain
-![1D Chain](images/1d_chain.jpg)
-
-### 2D Lattice
-![2D Lattice](images/2d_lattice.jpg)
-
-### 1D Quantum Conductance Simulation
-![1D Conductance](images/1d_conductance.jpg)
-
-### Anderson Localization in 1D
-![Anderson Localization](images/anderson_localization.jpg)
-
-### Quantum Hall Effect in 2D
-![Quantum Hall Effect](images/qhe_disorder_0.jpg)
-
-### Disorder in Quantum Hall Effect
-![Disordered QHE disorder = 0.0](images/qhe_disorder_0.jpg)
-![Disordered QHE disorder = 1.0](images/qhe_disorder_1.jpg)
-![Disordered QHE disorder = 2.0](images/qhe_disorder_2.jpg)
-![Disordered QHE disorder = 3.0](images/qhe_disorder_3.jpg)
-
 ## Installation
 
 ### Using Conda (Recommended)
@@ -110,6 +87,29 @@ These simulations are crucial for understanding:
 - **Quantum transport in nanowires and mesoscopic systems**
 - **Effects of disorder and localization in materials**
 - **Quantum Hall physics and topological states**
+
+## Results
+
+### 1D Chain
+![1D Chain](images/1d_chain.jpg)
+
+### 2D Lattice
+![2D Lattice](images/2d_lattice.jpg)
+
+### 1D Quantum Conductance Simulation
+![1D Conductance](images/1d_conductance.jpg)
+
+### Anderson Localization in 1D
+![Anderson Localization](images/anderson_localization.jpg)
+
+### Quantum Hall Effect in 2D
+![Quantum Hall Effect](images/qhe_disorder_0.jpg)
+
+### Disorder in Quantum Hall Effect
+![Disordered QHE disorder = 0.0](images/qhe_disorder_0.jpg)
+![Disordered QHE disorder = 1.0](images/qhe_disorder_1.jpg)
+![Disordered QHE disorder = 2.0](images/qhe_disorder_2.jpg)
+![Disordered QHE disorder = 3.0](images/qhe_disorder_3.jpg)
 
 This repository serves as a foundation for exploring more complex quantum transport phenomena. Contributions and extensions are welcome!
 

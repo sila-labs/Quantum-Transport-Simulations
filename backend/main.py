@@ -79,6 +79,7 @@ async def simulate(request: SimulationRequest):
     result = run_quantum_simulation(request.length, request.width, request.disorder_strength, request.magnetic_field)
     return result
 
+# need to add endpoints for simulating different materials, i.e., graphene etc.
 @app.get("/")
 async def root():
     return {"message": "Quantum Transport Simulation API is running!"}

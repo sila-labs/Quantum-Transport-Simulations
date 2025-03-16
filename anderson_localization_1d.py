@@ -4,6 +4,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 
+# need to define fe structure
+
+
 def make_disordered_system(length=10, t=-1, disorder_strength=1.0):
     lat = kwant.lattice.square()
     syst = kwant.Builder()

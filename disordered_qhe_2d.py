@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import cmath
 import random
 
+
+# for disordered --> work on 3d viz
 def make_disordered_qhe_system(width=10, length=20, t=-1, phi=0.1, disorder_strength=1.0):
     """Creates a 2D Quantum Hall system with disorder."""
     

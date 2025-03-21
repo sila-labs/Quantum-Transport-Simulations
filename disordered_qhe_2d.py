@@ -58,6 +58,7 @@ kwant.plot(system)
 energies = np.linspace(-3, 3, 100)
 conductance = compute_conductance(system, energies)
 
+# there should be a calculate conductance button and it should route here
 plt.figure(figsize=(8, 5))
 plt.plot(energies, conductance, label=f"Disorder Strength: {disorder_strength}")
 plt.xlabel("Energy (E)")

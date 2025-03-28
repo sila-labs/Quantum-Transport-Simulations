@@ -7,9 +7,17 @@ import io
 import base64
 
 app = FastAPI()
+from fastapi.middleware.cors import CORSMiddleware
 
-# just got back from vacation! will update this code starting Mon. 3/24
-# working on ittt will update 3/25
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or use ["http://localhost:5173"] for stricter security
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 # Define request model
 class SimulationRequest(BaseModel):
     length: int

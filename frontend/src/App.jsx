@@ -1,14 +1,9 @@
-// frontend/src/App.jsx
-// had no time today to work on this-- just examined the code for today, will work extra hard tomorrow
-import React from "react";
-import QuantumGraph from "./components/QuantumGraph";
-
 function App() {
   return (
-    <div className="w-full h-screen">
-      <QuantumGraph />
+    <div className="min-h-screen bg-yellow-100 flex items-center justify-center">
+      <h1 className="text-4xl font-bold underline text-blue-600 border-4 border-red-500 p-8 bg-white">
+        Hello Tailwind!
+      </h1>
     </div>
   );
 }
-
-export default App;

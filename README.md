@@ -2,6 +2,9 @@
 
 This repository contains Python scripts for simulating quantum transport phenomena using the Kwant package.
 
+### Current UI (actively being built!)
+![Current UI (actively being built!)](images/ui.png)
+
 ## Experiments Included
 
 1. **Quantum Conductance in 1D Chain** (`quantum_conductance_1d.py`)

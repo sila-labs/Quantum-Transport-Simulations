@@ -1,0 +1,17 @@
+# Phase 1: Add Wavefunction Viewer
+
+[ ] Create a new script: wavefunction_viewer.py
+[ ] Import system builders from existing experiments (e.g., disordered_qhe_2d.py)
+[ ] Build the system and finalize geometry
+[ ] Compute Hamiltonian matrix: H = syst.hamiltonian_submatrix(sparse=False)
+[ ] Diagonalize Hamiltonian: eigvals, eigvecs = np.linalg.eigh(H)
+[ ] Select a few eigenstates (e.g., near Fermi energy)
+[ ] Plot |ψ(x, y)|² over the lattice using kwant.plotter.map()
+[ ] Optionally, color-code eigenstates by spatial localization or energy
+[ ] Add argparse or function inputs to select:
+    - Disorder strength
+    - Energy range
+    - Number of eigenstates to view
+[ ] Save plots to /images/eigenstates/
+[ ] Add results section to README.md for wavefunction viewer
+[ ] (Optional) Animate eigenstate evolution as disorder changes

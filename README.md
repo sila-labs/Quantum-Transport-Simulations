@@ -122,9 +122,15 @@ name: quantum-transport-simulations
 channels:
   - conda-forge
   - defaults
+channel_priority: strict
 dependencies:
-  - python=3.10
-  - kwant
-  - numpy
-  - matplotlib
-  - scipy
+  - python=3.9
+  - kwant=1.4.2
+  - numpy=1.24.4
+  - scipy=1.10.1
+  - matplotlib=3.3.4
+  - fastapi=0.103.0
+  - uvicorn
+  - pydantic=1.10.8
+  - python-multipart
+

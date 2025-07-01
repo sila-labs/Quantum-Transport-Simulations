@@ -2,38 +2,45 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import kwant
 import numpy as np
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import io
 import base64
-
-app = FastAPI()
 from fastapi.middleware.cors import CORSMiddleware
 
+app = FastAPI()
+
+# Enable CORS for all origins (adjust as needed for security)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # or use ["http://localhost:5173"] for stricter security
+    allow_origins=["*"],  # Use ["http://localhost:5173"] in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# ---------- Request Models ----------
 
-# Define request model
 class SimulationRequest(BaseModel):
     length: int
     width: int
     disorder_strength: float
     magnetic_field: float  # Peierls phase parameter (φ)
 
-# Function to build and simulate the system
-def run_quantum_simulation(length, width, disorder_strength, magnetic_field):
+class EigenstateRequest(SimulationRequest):
+    eig_index: int = 0
+
+# ---------- System Builder Function ----------
+
+def make_system(length, width, disorder_strength, magnetic_field):
     lat = kwant.lattice.square()
     syst = kwant.Builder()
 
     for x in range(length):
         for y in range(width):
-            # On-site energy with disorder
-            syst[lat(x, y)] = disorder_strength * (2 * np.random.rand() - 1)
+            onsite_energy = disorder_strength * (2 * np.random.rand() - 1)
+            syst[lat(x, y)] = onsite_energy
 
             # Hopping in x-direction
             if x > 0:
@@ -55,10 +62,21 @@ def run_quantum_simulation(length, width, disorder_strength, magnetic_field):
     syst.attach_lead(lead)
     syst.attach_lead(lead.reversed())
 
-    # Finalize system
+    return syst
+
+# ---------- Simulation Endpoint ----------
+
+@app.post("/simulate")
+async def simulate(request: SimulationRequest):
+    syst = make_system(
+        request.length,
+        request.width,
+        request.disorder_strength,
+        request.magnetic_field,
+    )
     system = syst.finalized()
 
-    # Compute conductance
+    # Energy sweep
     energies = np.linspace(-3, 3, 100)
     conductance = []
     for E in energies:
@@ -74,22 +92,55 @@ def run_quantum_simulation(length, width, disorder_strength, magnetic_field):
     plt.legend()
     plt.grid()
 
-    # Save plot to a base64 image
     img_io = io.BytesIO()
     plt.savefig(img_io, format="png")
     img_io.seek(0)
     img_base64 = base64.b64encode(img_io.read()).decode("utf-8")
     plt.close()
 
-    return {"energies": list(energies), "conductance": conductance, "plot": img_base64}
+    return {
+        "energies": list(energies),
+        "conductance": conductance,
+        "plot": img_base64
+    }
 
-# FastAPI Route
-@app.post("/simulate")
-async def simulate(request: SimulationRequest):
-    result = run_quantum_simulation(request.length, request.width, request.disorder_strength, request.magnetic_field)
-    return result
+# ---------- Eigenstate Viewer Endpoint ----------
 
-# need to add endpoints for simulating different materials, i.e., graphene etc.
+@app.post("/eigenstate")
+async def eigenstate(request: EigenstateRequest):
+    syst = make_system(
+        request.length,
+        request.width,
+        request.disorder_strength,
+        request.magnetic_field,
+    )
+    system = syst.finalized()
+
+    # Diagonalize the Hamiltonian
+    h = system.hamiltonian_submatrix(sparse=False)
+    eigvals, eigvecs = np.linalg.eigh(h)
+
+    # Extract and plot the selected eigenstate
+    eig_index = request.eig_index
+    psi = eigvecs[:, eig_index]
+    density = np.abs(psi) ** 2
+
+    plt.figure(figsize=(5, 5))
+    kwant.plotter.map(system, density, colorbar=True)
+    img_io = io.BytesIO()
+    plt.savefig(img_io, format="png")
+    img_io.seek(0)
+    img_base64 = base64.b64encode(img_io.read()).decode("utf-8")
+    plt.close()
+
+    return {
+        "eig_index": eig_index,
+        "eigenvalue": float(eigvals[eig_index]),
+        "plot": img_base64
+    }
+
+# ---------- Root Endpoint ----------
+
 @app.get("/")
 async def root():
     return {"message": "Quantum Transport Simulation API is running!"}

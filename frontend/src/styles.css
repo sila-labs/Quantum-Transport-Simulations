@@ -1,0 +1,84 @@
+/* src/styles.css */
+body {
+  margin: 0;
+  font-size: 14px;
+  padding: 0;
+  font-family: 'JetBrains Mono', monospace;
+  background-color: #0b0c10;
+  color: #FFFFFF;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #FFFFFF;
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #FFFFFF;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.panel {
+  background-color: #1f2833;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #00AAFF;
+  flex: 1;
+  box-shadow: 0px 0px 10px #00AAFF33;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.app-wrapper {
+  max-width: 1600px;
+  margin: 40px auto;
+  padding: 40px;
+  box-sizing: border-box;
+  transform: scale(0.85);
+  transform-origin: top center;
+}
+
+button {
+  background-color: #00AAFF;
+  color: #0b0c10;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 6px;
+  font-size: 13px;
+}
+
+button:hover {
+  background-color: #FFFFFF;
+}
+
+ul {
+  padding-left: 0;
+  list-style-type: none;
+  text-align: center;
+}
+
+pre {
+  background-color: #0b0c10;
+  color: #ffffff;
+  padding: 10px;
+  border: 1px solid #00AAFF;
+  border-radius: 10px;
+  overflow-x: auto;
+  max-width: 100%;
+}

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import SimulationForm from "./components/SimulationForm";
 import PlotDisplay from "./components/PlotDisplay";
-import './styles.css'; // IMPORTANT: your custom styles
+import './styles.css';
+import DeviceDiagram from "./components/DeviceDiagram";
 
 export default function App() {
   const [conductancePlot, setConductancePlot] = useState(null);
@@ -20,6 +21,10 @@ export default function App() {
           />
         </div>
         <div className="panel">
+          <DeviceDiagram />
+          <div className="container">
+            {/* Your panels */}
+          </div>
           <PlotDisplay plot={conductancePlot} title="Conductance vs Energy" />
           <PlotDisplay
             plot={wavefunctionPlot}

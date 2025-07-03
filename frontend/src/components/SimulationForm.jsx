@@ -7,6 +7,7 @@ const SimulationForm = ({ setConductancePlot, setWavefunctionPlot, setWavefuncti
   const [disorder_strength, setDisorderStrength] = useState(0.5);
   const [magnetic_field, setMagneticField] = useState(0.1);
   const [eig_index, setEigIndex] = useState(0);
+  const [target_energy, setTargetEnergy] = useState(0.0);  // NEW
 
   const handleSimulation = async (e) => {
     e.preventDefault();
@@ -30,14 +31,15 @@ const SimulationForm = ({ setConductancePlot, setWavefunctionPlot, setWavefuncti
         width,
         disorder_strength,
         magnetic_field,
-        eig_index,
+        target_energy,  // NEW
       });
       setWavefunctionPlot(response.data.plot);
-      setWavefunctionEigenvalue(response.data.eigenvalue); // NEW
+      setWavefunctionEigenvalue(response.data.eigenvalue);
     } catch (error) {
       console.error("Eigenstate fetch failed:", error);
     }
   };
+
 
   return (
     <form
@@ -78,13 +80,22 @@ const SimulationForm = ({ setConductancePlot, setWavefunctionPlot, setWavefuncti
         <input type="range" min="0" max="1" step="0.01" value={magnetic_field} onChange={(e) => setMagneticField(Number(e.target.value))} className="w-full" />
       </div>
 
-      {/* Eigenstate Index */}
+      {/* Target Energy */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">
-          Eigenstate Index: <span className="font-semibold text-rose-600">{eig_index}</span>
+          Target Energy: <span className="font-semibold text-rose-600">{target_energy.toFixed(2)}</span>
         </label>
-        <input type="range" min="0" max="100" value={eig_index} onChange={(e) => setEigIndex(Number(e.target.value))} className="w-full" />
+        <input
+          type="range"
+          min="-3"
+          max="3"
+          step="0.05"
+          value={target_energy}
+          onChange={(e) => setTargetEnergy(Number(e.target.value))}
+          className="w-full"
+        />
       </div>
+
 
       <div className="flex space-x-4">
         <button

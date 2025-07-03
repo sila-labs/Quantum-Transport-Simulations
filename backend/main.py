@@ -29,7 +29,7 @@ class SimulationRequest(BaseModel):
     magnetic_field: float  # Peierls phase parameter (φ)
 
 class EigenstateRequest(SimulationRequest):
-    eig_index: int = 0
+    target_energy: float
 
 # ---------- System Builder Function ----------
 
@@ -116,15 +116,18 @@ async def eigenstate(request: EigenstateRequest):
     )
     system = syst.finalized()
 
-    # Diagonalize the Hamiltonian
+    # Diagonalize
     h = system.hamiltonian_submatrix(sparse=False)
     eigvals, eigvecs = np.linalg.eigh(h)
 
-    # Extract and plot the selected eigenstate
-    eig_index = request.eig_index
+    # Find index of eigenstate closest to target_energy
+    target_E = request.target_energy
+    eig_index = int(np.argmin(np.abs(eigvals - target_E)))
+    eigval = float(eigvals[eig_index])
     psi = eigvecs[:, eig_index]
     density = np.abs(psi) ** 2
 
+    # Plot
     plt.figure(figsize=(5, 5))
     kwant.plotter.map(system, density, colorbar=True)
     img_io = io.BytesIO()
@@ -134,8 +137,8 @@ async def eigenstate(request: EigenstateRequest):
     plt.close()
 
     return {
-        "eig_index": eig_index,
-        "eigenvalue": float(eigvals[eig_index]),
+        "matched_index": eig_index,
+        "eigenvalue": eigval,
         "plot": img_base64
     }
 

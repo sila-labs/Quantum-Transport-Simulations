@@ -2,6 +2,7 @@ import { useState } from "react";
 import SimulationForm from "./components/SimulationForm";
 import PlotDisplay from "./components/PlotDisplay";
 import './styles.css';
+
 import DeviceDiagram from "./components/DeviceDiagram";
 
 export default function App() {
@@ -11,20 +12,21 @@ export default function App() {
 
   return (
     <div className="app-wrapper">
-      <h1>Quantum Transport Simulator</h1>
+      <h1>Quantum Transport Simulator V 2.0</h1>
+
       <div className="container">
-        <div className="panel">
+        {/* LEFT column: Parameters + Diagram */}
+        <div className="panel" style={{ flex: "1", display: "flex", flexDirection: "column", gap: "20px" }}>
           <SimulationForm
             setConductancePlot={setConductancePlot}
             setWavefunctionPlot={setWavefunctionPlot}
             setWavefunctionEigenvalue={setWavefunctionEigenvalue}
           />
-        </div>
-        <div className="panel">
           <DeviceDiagram />
-          <div className="container">
-            {/* Your panels */}
-          </div>
+        </div>
+
+        {/* RIGHT column: Results */}
+        <div className="panel" style={{ flex: "1" }}>
           <PlotDisplay plot={conductancePlot} title="Conductance vs Energy" />
           <PlotDisplay
             plot={wavefunctionPlot}

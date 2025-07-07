@@ -12,12 +12,13 @@ const SimulationForm = ({ setConductancePlot, setWavefunctionPlot, setWavefuncti
   const handleSimulation = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/simulate", {
+      const response = await axios.post("/qtransport/api/simulate", {
         length,
         width,
         disorder_strength,
         magnetic_field,
       });
+
       setConductancePlot(response.data.plot);
     } catch (error) {
       console.error("Simulation failed:", error);
@@ -26,13 +27,14 @@ const SimulationForm = ({ setConductancePlot, setWavefunctionPlot, setWavefuncti
 
  const handleEigenstate = async () => {
     try {
-      const response = await axios.post("http://localhost:8000/eigenstate", {
+      const response = await axios.post("/qtransport/api/eigenstate", {
         length,
         width,
         disorder_strength,
         magnetic_field,
-        target_energy,  // NEW
+        target_energy,
       });
+
       setWavefunctionPlot(response.data.plot);
       setWavefunctionEigenvalue(response.data.eigenvalue);
     } catch (error) {

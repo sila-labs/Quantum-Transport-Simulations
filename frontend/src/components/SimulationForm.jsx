@@ -12,7 +12,8 @@ const SimulationForm = ({ setConductancePlot, setWavefunctionPlot, setWavefuncti
   const handleSimulation = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/qtransport/api/simulate", {
+      const response = await axios.post("http://localhost:8001/simulate", {
+      // const response = await axios.post("/qtransport/api/simulate", {
         length,
         width,
         disorder_strength,
@@ -27,7 +28,8 @@ const SimulationForm = ({ setConductancePlot, setWavefunctionPlot, setWavefuncti
 
  const handleEigenstate = async () => {
     try {
-      const response = await axios.post("/qtransport/api/eigenstate", {
+      const response = await axios.post("http://localhost:8001/eigenstate", {
+      // const response = await axios.post("/qtransport/api/eigenstate", {
         length,
         width,
         disorder_strength,

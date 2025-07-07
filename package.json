@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-responsive": "^10.0.1",
+    "react-responsiveness": "^0.1.5"
+  }
+}

@@ -1,0 +1,7 @@
+steps to deploy new version:
+git pull origin main
+cd ~/Quantum-Transport-Simulations/frontend
+npm run build
+sudo rm -rf /var/www/html/qtransport
+sudo cp -r dist /var/www/html/qtransport
+sudo systemctl reload nginx

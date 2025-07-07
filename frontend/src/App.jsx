@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <div className="app-wrapper">
-      <h1>Quantum Transport Simulator V 2.0</h1>
+      <h1>Quantum Transport Simulator V 2.1</h1>
 
       <div
         className="container"

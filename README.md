@@ -1,6 +1,6 @@
 # Quantum Transport Simulations Repository
 
-This repository contains an interactive Python-based framework and web application for simulating quantum electron transport in nanoscale systems, featuring real-time conductance visualization and wavefunction inspection using tight-binding models and the Kwant package.te
+This repository contains an interactive Python-based framework and web application for simulating quantum electron transport in nanoscale systems, featuring real-time conductance visualization and wavefunction inspection using tight-binding models and the Kwant package.
 
 [Note: This application is now live! Please try it out at this link!](http://silalabs.io/qtransport/)
 

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 import argparse
 
-from disordered_qhe_2d import make_system  # Modify if you're using another system script
+from core_experiments.disordered_qhe_2d import make_system  # Modify if you're using another system script
 
 def plot_wavefunction(syst, eig_index=0):
     # Finalize and get Hamiltonian matrix

@@ -16,6 +16,7 @@ export default function App() {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   return (
+    <>
     <div className="app-wrapper">
       <h1>Quantum Transport Simulator V 2.1</h1>
 
@@ -33,12 +34,12 @@ export default function App() {
             gap: "20px",
           }}
         >
+          <DeviceDiagram />
           <SimulationForm
             setConductancePlot={setConductancePlot}
             setWavefunctionPlot={setWavefunctionPlot}
             setWavefunctionEigenvalue={setWavefunctionEigenvalue}
           />
-          <DeviceDiagram />
         </div>
 
         {/* RIGHT (or Bottom) Panel */}
@@ -56,5 +57,38 @@ export default function App() {
         </div>
       </div>
     </div>
+    <footer
+        style={{
+          textAlign: "center",
+          fontSize: "0.9rem",
+          marginTop: "5px",
+          padding: "20px",
+          color: "#B9D9EB",
+        }}
+      >
+        Developed by{" "}
+        <a
+          href="https://senurir.github.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "#007acc", textDecoration: "none" }}
+        >
+          Senuri D.B. Rupasinghe
+        </a>
+        .
+        <br/>
+        If you like my work, feel free to{" "}
+        <a
+          href="https://buymeacoffee.com/senuri"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "#007acc", textDecoration: "none" }}
+        >
+          buy me a coffee ☕
+        </a>
+        !
+      </footer>
+    </>
+    
   );
 }

@@ -19,7 +19,7 @@ const DeviceDiagram = () => {
 
         {/* Scattering Region */}
         <rect x="100" y="40" width="450" height="70" fill="#1f2833" stroke="#00AAFF" strokeWidth="2" />
-        <text x="175" y="130" fill="#c5c6c7" fontSize="14">Scattering Region (Disordered Lattice)</text>
+        <text x="110" y="130" fill="#c5c6c7" fontSize="14">Scattering Region (Disordered / Magnetized Lattice)</text>
 
         {/* Arrows for electron flow */}
         <polygon points="120,75 140,65 140,85" fill="#00AAFF" />

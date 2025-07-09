@@ -5,3 +5,9 @@ npm run build
 sudo rm -rf /var/www/html/qtransport
 sudo cp -r dist /var/www/html/qtransport
 sudo systemctl reload nginx
+
+building backend (for dev):
+python -m uvicorn main:app --reload --port 8001
+
+building frontend (for dev):
+npm run dev

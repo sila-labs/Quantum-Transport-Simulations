@@ -62,7 +62,7 @@ export default function App() {
           textAlign: "center",
           fontSize: "0.9rem",
           marginTop: "5px",
-          padding: "20px",
+          padding: "1px 20px 12px",
           color: "#B9D9EB",
         }}
       >
